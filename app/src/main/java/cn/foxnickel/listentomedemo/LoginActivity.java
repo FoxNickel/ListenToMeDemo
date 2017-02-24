@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     /**
      * Id to identity READ_CONTACTS permission request.
+     * 请求通讯录权限用的
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
@@ -68,14 +69,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        populateAutoComplete();//自动补全的EditText实现
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        /*按下回车之后的监听器*/
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    attemptLogin();//请求登陆
                     return true;
                 }
                 return false;
@@ -102,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         getLoaderManager().initLoader(0, null, this);
     }
 
+    /*通讯录权限请求*/
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;

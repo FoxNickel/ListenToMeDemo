@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="appNameColor">#FAF703</color>
+    <color name="loginButtion">#105F8A</color>
 </resources>
